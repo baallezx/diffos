@@ -3,6 +3,9 @@ this is the actual implementation of the diffos which gives users the abilitiy t
 """
 import sys
 
+__author__ = "alexander balzer <abalzer22@gmail.com>"
+__version__ = "0.1.0"
+
 def helper(help_f=None): #*args, **kwargs):
 	help_methods = {
 		'diff'	:	'returns a diff object between the 2 machines',
