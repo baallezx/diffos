@@ -1,14 +1,36 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script_1 = <<SCRIPT
+echo hello!
+sudo apt-get install apache2 -y
+sudo apt-get install python vim tree ruby gem nmap -y
+mkdir tcp_connect
+SCRIPT
+
 Vagrant.configure(2) do |config|
 	config.vm.box = "hashicorp/precise32"
-	config.vm.provider "virtualbox" do
+	config.vm.provider "virtualbox" do |v|
 		v.name = "tcp_client"
 		v.memory = "512"
 	end
 
-	config.vm.provision "shell", inline <<-SHELL
-		sudo apt-get install python vim tree ruby gem -y
+#	config.vm.network "forwarded_port", guest: 50007, host: 50008
+
+	config.vm.provision "shell", inline: <<-SHELL
+		sudo apt-get update
+		sudo apt-get install apache2 -y
+		sudo apt-get install python vim tree ruby gem nmap -y
+		mkdir tcp_connect
+		sudo chgrp vagrant tcp_connect
+		sudo chown vagrant tcp_connect
 	SHELL
+
+#	config.vm.provision "shell", inline: $script_1
+
+	config.vm.provision "file", source: "./client.py", destination: "tcp_connect/client.py"
+
+#	config.vm.provision "shell", inline <<-SHELL
+#		python tcp_connect/client.py
+#	SHELL
 end
