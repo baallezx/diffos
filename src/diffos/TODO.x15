@@ -1,0 +1,18 @@
+- come up with folder structure.
+	- where to place config files
+	- where to save program daemon
+	?
+	- do you need a folder to save key files?
+	- does this process have different roles?
+		- if so what are the roles and how do you set up the folder structure for each?
+
+- come up with default user.
+	- decide what privilages the user gets
+
+- come up with methods for how to populate database fields.
+	- meaning you first need to get the os info.
+		- once you have that you can traverse the system accordingly updating the db how you need to.
+	- eventually do you want to just create a diffos package manager that works across all os types. is this a security risk?
+
+- come up with a service to back up the db. 
+	- this could be useful if a computer is really messed with and you need something to refernce later on.

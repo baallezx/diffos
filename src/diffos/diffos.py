@@ -21,11 +21,20 @@ def helper(help_f=None): #*args, **kwargs):
 			print spc,k,'\t',v
 	print '\n',
 	
+def load_comps(nodes=[]):
+	for node in nodes:
+		# create_node( node )
+		pass
 
 # TODO: come up with a grammar file for how diffos argument parsing works and how it applies to the command line and the functions within this library
 if __name__ == "__main__":
 	import optparse
 	l = sys.argv[1:]
 	# parse l with optparse
-	if l[0] == 'help':
+	if len(l) > 0:
+		if l[0] == 'help':
+			helper()
+		elif l[0] == 'diff':
+			load_comps()
+	else:
 		helper()
